@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">BookTask</string>
+
+    <string name="show_finished_books">Show finished books</string>
+    <string name="error">Error</string>
+
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="birthday">Birthday</string>
+    <string name="hometown">Hometown</string>
+    <string name="gender">Gender</string>
+    <string name="email">E-mail</string>
+    <string name="phone_number">Phone number</string>
+    <string name="finished_books_number">Number of books read</string>
+
+    <string name="first_name_null">Nikita</string>
+    <string name="last_name_null">Korikov</string>
+    <string name="birthday_null">01.05.1995</string>
+    <string name="hometown_null">Perm</string>
+    <string name="gender_null">Male</string>
+    <string name="email_null">bulbigood@gmail.com</string>
+    <string name="phone_number_null">+7 (999) 999 9999</string>
+    <string name="finished_books_number_null">5</string>
+
+    <string name="test_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</string>
+    <string name="test_medium">The quick brown fox jumps over the lazy dog</string>
+    <string name="test_short">Sample text</string>
+</resources>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/refresh_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ProfileFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            android:layout_marginBottom="@dimen/vertical_margin"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/KeyTextView"
+                    tools:text="@string/first_name" />
+                <TextView
+                    android:id="@+id/first_name"
+                    style="@style/ValueTextView"
+                    tools:text="@string/first_name_null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/KeyTextView"
+                    tools:text="@string/last_name" />
+                <TextView
+                    android:id="@+id/last_name"
+                    style="@style/ValueTextView"
+                    tools:text="@string/last_name_null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/KeyTextView"
+                    tools:text="@string/birthday" />
+                <TextView
+                    android:id="@+id/birthday"
+                    style="@style/ValueTextView"
+                    tools:text="@string/birthday_null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/KeyTextView"
+                    tools:text="@string/hometown" />
+                <TextView
+                    android:id="@+id/hometown"
+                    style="@style/ValueTextView"
+                    tools:text="@string/hometown_null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/KeyTextView"
+                    tools:text="@string/gender" />
+                <TextView
+                    android:id="@+id/gender"
+                    style="@style/ValueTextView"
+                    tools:text="@string/gender_null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/KeyTextView"
+                    tools:text="@string/email" />
+                <TextView
+                    android:id="@+id/email"
+                    style="@style/ValueTextView"
+                    tools:text="@string/email_null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/KeyTextView"
+                    tools:text="@string/phone_number" />
+                <TextView
+                    android:id="@+id/phone_number"
+                    style="@style/ValueTextView"
+                    tools:text="@string/phone_number_null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/KeyTextView"
+                    tools:text="@string/finished_books_number" />
+                <TextView
+                    android:id="@+id/finished_books_number"
+                    style="@style/ValueTextView"
+                    tools:text="@string/finished_books_number_null" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_finished_books"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:text="@string/show_finished_books" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
