@@ -1,8 +1,8 @@
-package com.example.booktask.data.source.web
+package com.example.booktask.model.source.web
 
 import androidx.lifecycle.LiveData
-import com.example.booktask.data.source.ProfileDataSource
-import com.example.booktask.data.types.Profile
+import com.example.booktask.model.source.ProfileDataSource
+import com.example.booktask.model.types.db.Profile
 import com.example.booktask.utils.result
 
 class ProfileWebSource(
@@ -17,7 +17,9 @@ class ProfileWebSource(
     }
 
     override suspend fun get(key: String): Result<Profile> {
-        return api.getProfile(key).result()
+        return api.getProfile(key).result {
+            toProfile(key)
+        }
     }
 
     override suspend fun getAll(key: String): Result<List<Profile>> {

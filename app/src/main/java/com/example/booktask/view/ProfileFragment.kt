@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.booktask.data.types.Profile
 import com.example.booktask.databinding.FragmentProfileBinding
+import com.example.booktask.model.types.db.Profile
 import com.example.booktask.utils.StringResource
 import com.example.booktask.utils.getViewModelFactory
 import com.example.booktask.utils.toast
@@ -33,7 +33,7 @@ class ProfileFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel.error.observe(viewLifecycleOwner, ::error)
         viewModel.profile.observe(viewLifecycleOwner, ::fillProfile)
-        viewModel.finishedBooksNumber.observe(viewLifecycleOwner, ::fillFinishedBooksNumber)
+        //viewModel.finishedBooksNumber.observe(viewLifecycleOwner, ::fillFinishedBooksNumber)
     }
 
     private fun fillProfile(profile: Profile) {

@@ -1,4 +1,4 @@
-package com.example.booktask.data.repo
+package com.example.booktask.model.repo
 
 import androidx.lifecycle.LiveData
 

@@ -27,7 +27,7 @@
                 android:orientation="horizontal">
                 <TextView
                     style="@style/KeyTextView"
-                    tools:text="@string/first_name" />
+                    android:text="@string/first_name" />
                 <TextView
                     android:id="@+id/first_name"
                     style="@style/ValueTextView"
@@ -41,7 +41,7 @@
                 android:orientation="horizontal">
                 <TextView
                     style="@style/KeyTextView"
-                    tools:text="@string/last_name" />
+                    android:text="@string/last_name" />
                 <TextView
                     android:id="@+id/last_name"
                     style="@style/ValueTextView"
@@ -55,7 +55,7 @@
                 android:orientation="horizontal">
                 <TextView
                     style="@style/KeyTextView"
-                    tools:text="@string/birthday" />
+                    android:text="@string/birthday" />
                 <TextView
                     android:id="@+id/birthday"
                     style="@style/ValueTextView"
@@ -69,7 +69,7 @@
                 android:orientation="horizontal">
                 <TextView
                     style="@style/KeyTextView"
-                    tools:text="@string/hometown" />
+                    android:text="@string/hometown" />
                 <TextView
                     android:id="@+id/hometown"
                     style="@style/ValueTextView"
@@ -83,7 +83,7 @@
                 android:orientation="horizontal">
                 <TextView
                     style="@style/KeyTextView"
-                    tools:text="@string/gender" />
+                    android:text="@string/gender" />
                 <TextView
                     android:id="@+id/gender"
                     style="@style/ValueTextView"
@@ -97,7 +97,7 @@
                 android:orientation="horizontal">
                 <TextView
                     style="@style/KeyTextView"
-                    tools:text="@string/email" />
+                    android:text="@string/email" />
                 <TextView
                     android:id="@+id/email"
                     style="@style/ValueTextView"
@@ -111,7 +111,7 @@
                 android:orientation="horizontal">
                 <TextView
                     style="@style/KeyTextView"
-                    tools:text="@string/phone_number" />
+                    android:text="@string/phone_number" />
                 <TextView
                     android:id="@+id/phone_number"
                     style="@style/ValueTextView"
@@ -125,7 +125,7 @@
                 android:orientation="horizontal">
                 <TextView
                     style="@style/KeyTextView"
-                    tools:text="@string/finished_books_number" />
+                    android:text="@string/finished_books_number" />
                 <TextView
                     android:id="@+id/finished_books_number"
                     style="@style/ValueTextView"

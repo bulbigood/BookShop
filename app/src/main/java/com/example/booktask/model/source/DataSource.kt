@@ -1,4 +1,4 @@
-package com.example.booktask.data.source
+package com.example.booktask.model.source
 
 import androidx.lifecycle.LiveData
 
@@ -11,6 +11,8 @@ interface DataSource<K, V> {
 
     suspend fun save(key: K, value: V)
     suspend fun saveAll(key: K, values: Collection<V>)
+
+    // TODO: update, updateAll
 
     suspend fun remove(key: K)
     suspend fun removeAll(key: K)

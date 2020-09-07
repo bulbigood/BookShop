@@ -5,8 +5,8 @@ import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.savedstate.SavedStateRegistryOwner
-import com.example.booktask.data.repo.FinishedBooksRepository
-import com.example.booktask.data.repo.ProfileRepository
+import com.example.booktask.model.repo.FinishedBooksRepository
+import com.example.booktask.model.repo.ProfileRepository
 import com.example.booktask.viewmodel.ProfileViewModel
 
 @Suppress("UNCHECKED_CAST")

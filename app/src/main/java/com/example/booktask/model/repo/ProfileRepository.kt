@@ -1,8 +1,9 @@
-package com.example.booktask.data.repo
+package com.example.booktask.model.repo
 
 import androidx.lifecycle.LiveData
-import com.example.booktask.data.source.ProfileDataSource
-import com.example.booktask.data.types.Profile
+import com.example.booktask.model.source.ProfileDataSource
+import com.example.booktask.model.types.db.Profile
+import timber.log.Timber
 
 class ProfileRepository(
     private val token: String,
@@ -15,7 +16,11 @@ class ProfileRepository(
     }
 
     override suspend fun refresh() {
-        val data = remoteDataSource.get(token).getOrThrow()
+        val data = remoteDataSource.get(token).getOrElse {
+            Timber.e(it)
+            return
+        }
+        // TODO: атомарная операция update
         localDataSource.remove(token)
         localDataSource.save(token, data)
     }

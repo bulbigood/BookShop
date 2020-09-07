@@ -1,8 +1,8 @@
-package com.example.booktask.data.source.web
+package com.example.booktask.model.source.web
 
 import androidx.lifecycle.LiveData
-import com.example.booktask.data.source.FinishedBooksDataSource
-import com.example.booktask.data.types.Book
+import com.example.booktask.model.source.FinishedBooksDataSource
+import com.example.booktask.model.types.db.Book
 
 class FinishedBooksWebSource(
 	private val api: WebApi
@@ -20,7 +20,7 @@ class FinishedBooksWebSource(
 	}
 
 	override suspend fun getAll(key: String): Result<List<Book>> {
-		TODO("Not yet implemented")
+		return Result.failure(RuntimeException("Not yet implemented"))
 	}
 
 	override suspend fun save(key: String, value: Book) {

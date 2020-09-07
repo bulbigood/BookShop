@@ -2,16 +2,21 @@ package com.example.booktask
 
 import android.app.Application
 import androidx.room.Room
-import com.example.booktask.data.repo.FinishedBooksRepository
-import com.example.booktask.data.repo.ProfileRepository
-import com.example.booktask.data.source.web.FinishedBooksWebSource
-import com.example.booktask.data.source.web.ProfileWebSource
-import com.example.booktask.data.source.web.WebApi
+import com.example.booktask.model.repo.FinishedBooksRepository
+import com.example.booktask.model.repo.ProfileRepository
+import com.example.booktask.model.source.db.FinishedBooksDatabaseSource
+import com.example.booktask.model.source.db.ProfileDatabaseSource
+import com.example.booktask.model.source.web.FinishedBooksWebSource
+import com.example.booktask.model.source.web.ProfileWebSource
+import com.example.booktask.model.source.web.WebApi
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import timber.log.Timber
+import timber.log.Timber.DebugTree
+
 
 class App : Application() {
 
@@ -20,6 +25,10 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(DebugTree())
+        }
 
         val gson: Gson = GsonBuilder()
             //.registerTypeAdapter(Id::class.java, IdTypeAdapter())
@@ -43,21 +52,26 @@ class App : Application() {
             ).build()
         }
 
-        setupDataSources(webApi)
+        setupRepositories(webApi)
     }
 
-    private fun setupDataSources(webApi: WebApi) {
+    private fun setupRepositories(webApi: WebApi) {
         val token = DEFAULT_TOKEN
+
         val profileWebSource = ProfileWebSource(webApi)
         val finishedBooksWebSource = FinishedBooksWebSource(webApi)
+
+        val profileDatabaseSource = ProfileDatabaseSource(database.profileDao())
+        val finishedBooksDatabaseSource = FinishedBooksDatabaseSource(database.finishedBooksDao())
+
         profileRepository = ProfileRepository(
             token,
-            localDataSource = database.profileDao(),
+            localDataSource = profileDatabaseSource,
             remoteDataSource = profileWebSource
         )
         finishedBooksRepository = FinishedBooksRepository(
             token,
-            localDataSource = database.finishedBooksDao(),
+            localDataSource = finishedBooksDatabaseSource,
             remoteDataSource = finishedBooksWebSource
         )
     }
