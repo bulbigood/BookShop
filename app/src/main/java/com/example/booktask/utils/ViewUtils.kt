@@ -14,9 +14,9 @@ fun Fragment.getViewModelFactory(): ViewModelFactory {
     )
 }
 
-fun Fragment.toast(resId: Int, isLong: Boolean = false) {
+fun Fragment.toast(message: String, isLong: Boolean = false) {
     val length = if (isLong) Toast.LENGTH_LONG else Toast.LENGTH_SHORT
-    Toast.makeText(context, getString(resId), length).apply {
+    Toast.makeText(context, message, length).apply {
         show()
     }
 }

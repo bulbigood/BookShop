@@ -17,10 +17,7 @@ class FinishedBooksRepository(
 
 	override suspend fun refresh() {
 		Timber.w("Books refresh")
-		val data = remoteDataSource.getAll(token).getOrElse {
-            Timber.e(it)
-            return
-        }
+		val data = remoteDataSource.getAll(token).getOrThrow()
 		localDataSource.removeAll(token)
 		localDataSource.saveAll(token, data)
 	}

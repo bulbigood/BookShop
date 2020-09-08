@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.booktask.R
 import com.example.booktask.databinding.FragmentProfileBinding
 import com.example.booktask.model.types.db.Profile
-import com.example.booktask.utils.StringResource
 import com.example.booktask.utils.getViewModelFactory
 import com.example.booktask.utils.toast
 import com.example.booktask.viewmodel.ProfileViewModel
+import timber.log.Timber
 
 class ProfileFragment : Fragment() {
 
@@ -31,9 +32,17 @@ class ProfileFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        binding.refreshLayout.setOnRefreshListener(::onRefresh)
         viewModel.error.observe(viewLifecycleOwner, ::error)
         viewModel.profile.observe(viewLifecycleOwner, ::fillProfile)
         viewModel.finishedBooksNumber.observe(viewLifecycleOwner, ::fillFinishedBooksNumber)
+    }
+
+    private fun onRefresh() {
+        viewModel.update().invokeOnCompletion { err ->
+            error(err)
+            binding.refreshLayout.isRefreshing = false
+        }
     }
 
     private fun fillProfile(profile: Profile) {
@@ -52,8 +61,12 @@ class ProfileFragment : Fragment() {
         binding.finishedBooksNumber.text = count.toString()
     }
 
-    private fun error(res: StringResource) {
-        toast(res, isLong = true)
+    private fun error(err: Throwable?) {
+        if (err != null) {
+            val toastMessage = err.localizedMessage ?: getString(R.string.error)
+            toast(toastMessage, isLong = true)
+            Timber.e(err)
+        }
     }
 
     companion object {

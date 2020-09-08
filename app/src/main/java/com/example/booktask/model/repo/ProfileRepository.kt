@@ -16,12 +16,8 @@ class ProfileRepository(
     }
 
     override suspend fun refresh() {
-        // TODO: протянуть "error: LiveData" через все абстракции для передачи ошибок в UI ?
         Timber.w("Profile refresh")
-        val data = remoteDataSource.get(token).getOrElse {
-            Timber.e(it)
-            return
-        }
+        val data = remoteDataSource.get(token).getOrThrow()
         localDataSource.save(token, data)
     }
 }

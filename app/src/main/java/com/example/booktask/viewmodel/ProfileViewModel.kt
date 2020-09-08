@@ -10,10 +10,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.booktask.model.repo.FinishedBooksRepository
 import com.example.booktask.model.repo.ProfileRepository
 import com.example.booktask.model.types.db.Profile
-import com.example.booktask.utils.StringResource
 import com.example.booktask.utils.toLiveData
-import kotlinx.coroutines.launch
-import timber.log.Timber
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
 
 class ProfileViewModel(
 	private val profileRepository: ProfileRepository,
@@ -24,8 +23,8 @@ class ProfileViewModel(
 		update()
 	}
 
-	val _error: MutableLiveData<StringResource> = MutableLiveData()
-	val error: LiveData<StringResource> = _error
+	private val _error: MutableLiveData<Throwable> = MutableLiveData()
+	val error: LiveData<Throwable> = _error
 
 	val profile: LiveData<Profile> = profileRepository.data()
 		.distinctUntilChanged()
@@ -44,15 +43,14 @@ class ProfileViewModel(
 	/**
 	 * Обновляет данные профиля
 	 */
-	private fun update() {
-		viewModelScope.launch {
+	fun update(): Job {
+		return viewModelScope.async {
 			profileRepository.refresh()
 			finishedBooksRepository.refresh()
 		}
 	}
 
 	private fun showError(t: Throwable) {
-		_error.value = com.example.booktask.R.string.error
-		Timber.e(t)
+		_error.value = t
 	}
 }
