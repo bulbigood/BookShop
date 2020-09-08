@@ -3,6 +3,7 @@ package com.example.booktask.model.source.web
 import androidx.lifecycle.LiveData
 import com.example.booktask.model.source.FinishedBooksDataSource
 import com.example.booktask.model.types.db.Book
+import com.example.booktask.utils.result
 
 class FinishedBooksWebSource(
 	private val api: WebApi
@@ -20,7 +21,9 @@ class FinishedBooksWebSource(
 	}
 
 	override suspend fun getAll(key: String): Result<List<Book>> {
-		return Result.failure(RuntimeException("Not yet implemented"))
+		return api.getFinishedBooks(key).result {
+			toBooksList()
+		}
 	}
 
 	override suspend fun save(key: String, value: Book) {

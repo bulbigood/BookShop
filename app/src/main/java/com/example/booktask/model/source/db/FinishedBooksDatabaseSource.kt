@@ -1,9 +1,9 @@
 package com.example.booktask.model.source.db
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.map
 import com.example.booktask.model.source.FinishedBooksDataSource
 import com.example.booktask.model.types.db.Book
-import timber.log.Timber
 
 class FinishedBooksDatabaseSource(
 	private val api: BookDao
@@ -13,7 +13,13 @@ class FinishedBooksDatabaseSource(
 	}
 
 	override fun observeAll(key: String): LiveData<Result<List<Book>>> {
-		TODO("Not yet implemented")
+		return api.observeAll()
+			.map {  list ->
+				list.map {
+					it.toBook()
+				}
+			}
+			.map { Result.success(it) }
 	}
 
 	override suspend fun get(key: String): Result<Book> {
@@ -29,7 +35,7 @@ class FinishedBooksDatabaseSource(
 	}
 
 	override suspend fun saveAll(key: String, values: Collection<Book>) {
-		Timber.e("Not yet implemented")
+		api.insert(*values.toTypedArray())
 	}
 
 	override suspend fun remove(key: String) {
@@ -37,6 +43,6 @@ class FinishedBooksDatabaseSource(
 	}
 
 	override suspend fun removeAll(key: String) {
-		Timber.e("Not yet implemented")
+		api.clear()
 	}
 }

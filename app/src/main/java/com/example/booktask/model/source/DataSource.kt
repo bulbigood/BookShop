@@ -2,18 +2,16 @@ package com.example.booktask.model.source
 
 import androidx.lifecycle.LiveData
 
-interface DataSource<K, V> {
-    fun observe(key: K): LiveData<Result<V>>
-    fun observeAll(key: K): LiveData<Result<List<V>>>
+interface DataSource<KEY, VALUE> {
+    fun observe(key: KEY): LiveData<Result<VALUE>>
+    fun observeAll(key: KEY): LiveData<Result<List<VALUE>>>
 
-    suspend fun get(key: K): Result<V>
-    suspend fun getAll(key: K): Result<List<V>>
+    suspend fun get(key: KEY): Result<VALUE>
+    suspend fun getAll(key: KEY): Result<List<VALUE>>
 
-    suspend fun save(key: K, value: V)
-    suspend fun saveAll(key: K, values: Collection<V>)
+    suspend fun save(key: KEY, value: VALUE)
+    suspend fun saveAll(key: KEY, values: Collection<VALUE>)
 
-    // TODO: update, updateAll
-
-    suspend fun remove(key: K)
-    suspend fun removeAll(key: K)
+    suspend fun remove(key: KEY)
+    suspend fun removeAll(key: KEY)
 }

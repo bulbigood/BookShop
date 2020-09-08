@@ -4,15 +4,19 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.booktask.model.source.db.BookDao
 import com.example.booktask.model.source.db.ProfileDao
+import com.example.booktask.model.types.db.Author
 import com.example.booktask.model.types.db.Book
+import com.example.booktask.model.types.db.Book2Author
 import com.example.booktask.model.types.db.Profile
 
 @Database(
 	entities = [
 		Profile::class,
-		Book::class
+		Book::class,
+		Author::class,
+		Book2Author::class
 	],
-	version = 1,
+	version = 3,
 	exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

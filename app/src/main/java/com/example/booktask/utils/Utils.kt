@@ -9,6 +9,7 @@ import retrofit2.Response
 
 typealias StringResource = Int
 
+// TODO: куда кидать контекст корутины? Проверить эмуляцией долгой загрузки
 suspend fun <T, K> Response<ApiResponse<T>>.result(transform: T.() -> K): Result<K> {
 	return withContext(Dispatchers.IO) {
 		val data = body()?.data

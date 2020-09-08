@@ -6,12 +6,13 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.booktask.model.types.db.Book
+import com.example.booktask.model.types.db.BookWithAuthors
 
 @Dao
 interface BookDao {
 
     @Query("SELECT * FROM Books")
-    fun observeAll(): LiveData<List<Book>>
+    fun observeAll(): LiveData<List<BookWithAuthors>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(vararg books: Book)

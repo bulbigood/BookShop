@@ -46,15 +46,15 @@ class App : Application() {
         val webApi = retrofit.create(WebApi::class.java)
 
         if (_database == null) {
-            _database = Room.databaseBuilder(
-                applicationContext,
-                AppDatabase::class.java, "database"
-            ).build()
+            _database = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "database")
+                .fallbackToDestructiveMigration()
+                .build()
         }
 
         setupRepositories(webApi)
     }
 
+    // TODO: переделать на dependency injection (Service Locator, Koin, самописный)
     private fun setupRepositories(webApi: WebApi) {
         val token = DEFAULT_TOKEN
 

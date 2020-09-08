@@ -17,7 +17,6 @@ class ViewModelFactory constructor(
     defaultArgs: Bundle? = null
 ) : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
 
-    // TODO: переделать на dependency injection Koin
 	override fun <T : ViewModel> create(
         key: String,
         modelClass: Class<T>,

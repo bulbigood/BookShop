@@ -27,18 +27,18 @@ class ProfileViewModel(
 	val _error: MutableLiveData<StringResource> = MutableLiveData()
 	val error: LiveData<StringResource> = _error
 
-	// TODO: проверить сколько раз вызывается. Не дергать если данные пришли те же самые
 	val profile: LiveData<Profile> = profileRepository.data()
 		.distinctUntilChanged()
 		.switchMap { result ->
 			result.toLiveData(this::showError)
 		}
 
-	// TODO:
 	val finishedBooksNumber: LiveData<Int> = finishedBooksRepository.data()
 		.distinctUntilChanged()
 		.switchMap { result ->
-			result.toLiveData(this::showError).map { it.count() }
+			result.toLiveData(this::showError).map {
+				it.count()
+			}
 		}
 
 	/**
