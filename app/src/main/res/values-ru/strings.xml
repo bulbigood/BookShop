@@ -1,0 +1,18 @@
+<resources>
+    <string name="date_format">d MMMM yyyy\'г\'.</string>
+
+    <string name="show_finished_books">Показать прочитанные книги</string>
+    <string name="error">Ошибка</string>
+
+    <string name="first_name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="birthday">День рождения</string>
+    <string name="hometown">Город</string>
+    <string name="gender">Пол</string>
+    <string name="email">E-mail</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="finished_books_number">Число прочитанных книг</string>
+
+    <string name="gender_man">Мужчина</string>
+    <string name="gender_woman">Женщина</string>
+</resources>

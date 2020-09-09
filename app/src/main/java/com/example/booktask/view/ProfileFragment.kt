@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import com.example.booktask.R
 import com.example.booktask.databinding.FragmentProfileBinding
 import com.example.booktask.model.types.db.Profile
+import com.example.booktask.utils.formatRawDate
 import com.example.booktask.utils.getViewModelFactory
 import com.example.booktask.utils.toast
 import com.example.booktask.viewmodel.ProfileViewModel
@@ -46,12 +47,21 @@ class ProfileFragment : Fragment() {
     }
 
     private fun fillProfile(profile: Profile) {
+        val birthday = formatRawDate(profile.birthDate, profile.dateFormat)
+        val gender = profile.typedGender?.let {
+            val res = when(it) {
+                Profile.Gender.MAN -> R.string.gender_man
+                Profile.Gender.WOMAN -> R.string.gender_woman
+            }
+            getString(res)
+        } ?: ""
+
         binding.also {
             it.firstName.text = profile.firstName
             it.lastName.text = profile.lastName
-            it.birthday.text = profile.birthDate
+            it.birthday.text = birthday
             it.hometown.text = profile.city
-            it.gender.text = profile.gender
+            it.gender.text = gender
             it.email.text = profile.email
             it.phoneNumber.text = profile.phoneNumber
         }

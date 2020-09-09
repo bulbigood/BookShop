@@ -3,6 +3,8 @@ package com.example.booktask.model.types.db
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Entity(tableName = "profiles")
 data class Profile @JvmOverloads constructor(
@@ -20,4 +22,19 @@ data class Profile @JvmOverloads constructor(
     @ColumnInfo var phoneNumber: String? = null,
     @ColumnInfo var vip: Boolean = false,
     @ColumnInfo var vipExpired: String? = null
-)
+) {
+
+	val dateFormat: SimpleDateFormat
+		get() = SimpleDateFormat("yyyy-mm-dd", Locale.getDefault())
+
+	val typedGender: Gender?
+		get() = when (gender) {
+            "m" -> Gender.MAN
+            "w" -> Gender.WOMAN
+			else -> null
+		}
+
+	enum class Gender {
+		MAN, WOMAN
+	}
+}
